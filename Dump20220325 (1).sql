@@ -27,7 +27,7 @@ CREATE TABLE `comedyevent` (
   `age_limit` int NOT NULL,
   `standUp` tinyint NOT NULL,
   PRIMARY KEY (`eid`),
-  CONSTRAINT `eid-comedy` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`)
+  CONSTRAINT `eid-comedy` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,7 +85,8 @@ CREATE TABLE `event` (
   `endTIme` varchar(45) NOT NULL,
   `title` varchar(45) NOT NULL,
   `eid` varchar(45) NOT NULL,
-  PRIMARY KEY (`eid`)
+  PRIMARY KEY (`eid`),
+  CONSTRAINT `eid-event` FOREIGN KEY (`eid`) REFERENCES `performs` (`eid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -111,7 +112,7 @@ CREATE TABLE `hostedat` (
   `vid` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`eid`),
   KEY `vid_idx` (`vid`),
-  CONSTRAINT `eid-hosted` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`),
+  CONSTRAINT `eid-hosted` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`) ON DELETE CASCADE,
   CONSTRAINT `vid-hosted` FOREIGN KEY (`vid`) REFERENCES `venue` (`vid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -138,7 +139,7 @@ CREATE TABLE `musicevent` (
   `liveSet` tinyint NOT NULL,
   `genre` varchar(45) NOT NULL,
   PRIMARY KEY (`eid`),
-  CONSTRAINT `eid-music` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`)
+  CONSTRAINT `eid-music` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -203,7 +204,7 @@ CREATE TABLE `performer` (
 
 LOCK TABLES `performer` WRITE;
 /*!40000 ALTER TABLE `performer` DISABLE KEYS */;
-INSERT INTO `performer` VALUES ('Jack Johnson','1','Music','jackjHawaii@gmail.com','813-332-8759','96801'),('Lady Gaga','2','Music','lgIsBoss@yahoo.net','643-234-1820','12093'),('Ariana Grande','3','Music','AriG@optonline.net','432-349-3902','12093'),('Jerry Seinfeld','4','Comedy','LarryDavidisBald@gmail.com','984-102-3203','19322'),('Larry David','5','Comedy','JerrySisAJerk@live.com','012-302-3496','12093'),('Florida Georgia Line','6','Music','Fgl123@hotmail.com','921-782-9021','50940'),('Ryan Reynolds','7','Comedy','RyanReynoldsComedy@reynolds.com','564-832-4320','29083'),('Amy Schumer','8','Comedy','Ams@yahoo.com','021-964-7476','78439');
+INSERT INTO `performer` VALUES ('Test','123123','Music','test@test.com','1203320120','test@test.com'),('Lady Gaga','2','Music','lgIsBoss@yahoo.net','643-234-1820','12093'),('Ariana Grande','3','Music','AriG@optonline.net','432-349-3902','12093'),('Jerry Seinfeld','4','Comedy','LarryDavidisBald@gmail.com','984-102-3203','19322'),('Larry David','5','Comedy','JerrySisAJerk@live.com','012-302-3496','12093'),('Florida Georgia Line','6','Music','Fgl123@hotmail.com','921-782-9021','50940'),('Ryan Reynolds','7','Comedy','RyanReynoldsComedy@reynolds.com','564-832-4320','29083'),('Amy Schumer','8','Comedy','Ams@yahoo.com','021-964-7476','78439'),('test','test','test','test','test','test'),('test','test123','test','test@test','test','test@test');
 /*!40000 ALTER TABLE `performer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,8 +220,8 @@ CREATE TABLE `performs` (
   `pid` varchar(45) NOT NULL,
   PRIMARY KEY (`eid`,`pid`),
   KEY `pid-performs_idx` (`pid`),
-  CONSTRAINT `eid-perf` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`),
-  CONSTRAINT `pid-perf` FOREIGN KEY (`pid`) REFERENCES `performer` (`pid`)
+  CONSTRAINT `eid-perf` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`) ON DELETE CASCADE,
+  CONSTRAINT `pid-perf` FOREIGN KEY (`pid`) REFERENCES `performer` (`pid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -230,7 +231,7 @@ CREATE TABLE `performs` (
 
 LOCK TABLES `performs` WRITE;
 /*!40000 ALTER TABLE `performs` DISABLE KEYS */;
-INSERT INTO `performs` VALUES ('2','2'),('3','3'),('8','3'),('1','4'),('5','4'),('9','4'),('1','5'),('6','6'),('7','7'),('10','8');
+INSERT INTO `performs` VALUES ('2','2'),('3','3'),('8','3'),('1','4'),('5','4'),('9','4'),('1','5'),('4','5'),('6','6'),('7','7'),('10','8');
 /*!40000 ALTER TABLE `performs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,7 +336,7 @@ CREATE TABLE `sponsors` (
   `eid` varchar(45) NOT NULL,
   PRIMARY KEY (`sid`,`eid`),
   KEY `eid_idx` (`eid`),
-  CONSTRAINT `eid` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`),
+  CONSTRAINT `eid` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`) ON DELETE CASCADE,
   CONSTRAINT `sid` FOREIGN KEY (`sid`) REFERENCES `sponsor` (`sid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -370,6 +371,7 @@ CREATE TABLE `ticket` (
   KEY `oid_idx` (`oid`),
   KEY `eid-ticket_idx` (`eid`),
   KEY `seat_idx` (`vid`,`seat_code`,`row`,`section`),
+  CONSTRAINT `eid-ticket` FOREIGN KEY (`eid`) REFERENCES `event` (`eid`) ON DELETE CASCADE,
   CONSTRAINT `oid` FOREIGN KEY (`oid`) REFERENCES `purchase_order` (`oid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -380,7 +382,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES ('1','1','124',45,'GA','A','3A','1'),('2','5','423',45,'GA','C','4C','2'),('3','90','182',90,'Floor','E','12E','3'),('4','3','83',90,'Floor','B','14B','4'),('5','3','782',90,'Floor','E','12E','5'),('6','3','123',45,'B','B','11B','4'),('7','3','123',45,'D','D','9D','2');
+INSERT INTO `ticket` VALUES ('1','1','124',45,'GA','A','3A','1'),('2','5','423',45,'GA','C','4C','2'),('3','4','182',90,'Floor','E','12E','3'),('4','3','83',90,'Floor','B','14B','4'),('5','3','782',90,'Floor','E','12E','5'),('6','3','123',45,'B','B','11B','4'),('7','3','123',45,'D','D','9D','2');
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,4 +427,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-24 21:15:16
+-- Dump completed on 2022-03-25 13:24:52
