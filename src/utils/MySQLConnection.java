@@ -8,7 +8,7 @@ public class MySQLConnection {
 
     static {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticketbooking", "root", "Chicken1soup!" );
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticketbooking", "", "" );
         } catch (SQLException e) {
             e.printStackTrace();
         }
