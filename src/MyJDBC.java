@@ -1,7 +1,4 @@
-import views.CreatePerformerPanel;
-import views.DeleteArtistPanel;
-import views.SelectPanel;
-import views.TextAreaOutputStream;
+import views.*;
 
 import java.io.PrintStream;
 import java.sql.*;
@@ -33,11 +30,13 @@ public class MyJDBC {
         SelectPanel selectP = new SelectPanel();
         CreatePerformerPanel createP = new CreatePerformerPanel();
         DeleteArtistPanel deleteP = new DeleteArtistPanel();
+        ProjectionPanel projectP = new ProjectionPanel();
 
         //Adding components to main panel
         main.add(selectP.getPanel());
         main.add(createP.getPanel());
         main.add(deleteP.getPanel());
+        main.add(projectP.getPanel());
         main.add( new JScrollPane( ta )  );
 
 

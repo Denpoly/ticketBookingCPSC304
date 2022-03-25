@@ -81,4 +81,27 @@ public class MySQLConnection {
 
     }
 
+    public static ResultSet projectEventsByOptions(Boolean hasFood, Boolean hasAlcohol, Boolean isOutdoors){
+        String query = "SELECT e.title, v.name FROM event e, hostedAt h, venue v WHERE e.eid = h.eid AND h.vid = v.vid AND v.has_alcohol = ? AND v.has_food = ? AND v.is_outdoor = ?";
+        PreparedStatement stmt = null;
+
+        try{
+            stmt = connection.prepareStatement(query);
+            stmt.setString(1, booleanToString(hasAlcohol));
+            stmt.setString(2, booleanToString(hasFood));
+            stmt.setString(3, booleanToString(isOutdoors));
+
+            ResultSet rs = stmt.executeQuery();
+            return rs;
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+        return null;
+
+    }
+
+    private static String booleanToString(boolean b){
+        return b? "1" : "0";
+    }
+
 }
