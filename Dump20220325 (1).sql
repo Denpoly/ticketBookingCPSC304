@@ -22,7 +22,7 @@
 DROP TABLE IF EXISTS `comedyevent`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comedyevent` (
+CREATE TABLE `comedyevent` (venue
   `eid` varchar(45) NOT NULL,
   `age_limit` int NOT NULL,
   `standUp` tinyint NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (12345,'adamdi134@hotmail.com','1938237742','adamD102','V6T 1z3','password!','Adam','Dixon'),(124,'denpollly@yahoo.com','1237228304','denpoly','80465','pass123','Dennis','Polyakov'),(12308,'mattmemme@live.com','1230948392','mattmemme','V6T 1z3','123pass','Matthew','Memme'),(123984,'testUser1@hotmail.com','1938462883','testUser1','V5N 1W1','passlel12','John','Smith'),(0,'testUser2@hotmail.com','1299334833','testUser2','94704','newPassword','Jacob','Tan');
+INSERT INTO `customer` VALUES (12345,'adamdi134@hotmail.com','1938237742','adamD102','V6T 1z3','password!','Adam','Dixon'),(124,'denpollly@yahoo.com','1237228304','denpoly','80465','pass123','Dennis','Polyakov'),(12308,'mattmemme@live.com','1230948392','mattmemme','V6T 1z3','123pass','Matthew','Memme'),(123984,'testUser1@hotmail.com','1938462883','testUser1','V5N 1W1','passlel12','John','Smith'),(0,'testUser2@hotmail.com','1299334833','testUser2','94704','newPassword','Jacob','Tan'),(241,'neo.b@gmail.com','6045328786','neob123','v6j1k2','password123','Neo','Brown'),(3145,'ian.c@hotmail.ca','5867268876','ianc123','v7h1t4','password321','Ian','Castello'),(4713,'jill.b@live.ca','3765117825','jillb726','j6k9d0','pword123','Jill','Barber'),(71235,'pascal.h@gmail.com','2767825564','pascalb627','b8g6j2','passw123','Pascal','Huber');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +260,7 @@ CREATE TABLE `purchase_order` (
 
 LOCK TABLES `purchase_order` WRITE;
 /*!40000 ALTER TABLE `purchase_order` DISABLE KEYS */;
-INSERT INTO `purchase_order` VALUES ('123',2,'2022-03-02T20:15:29-05',90,'denpoly'),('124',1,'2022-02-28T20:15:29-05',45,'testUser1'),('182',1,'2022-02-27T20:15:29-05',90,'testUser1'),('423',1,'2022-01-29T20:15:29-05',45,'mattmemme'),('782',1,'2022-03-01T20:15:29-05',90,'mattmemme'),('83',1,'2022-03-09T20:15:29-05',90,'adamD102');
+INSERT INTO `purchase_order` VALUES ('123',2,'2022-03-02T20:15:29-05',90,'denpoly'),('124',1,'2022-02-28T20:15:29-05',45,'testUser1'),('182',1,'2022-02-27T20:15:29-05',90,'testUser1'),('423',1,'2022-01-29T20:15:29-05',45,'mattmemme'),('782',1,'2022-03-01T20:15:29-05',90,'mattmemme'),('83',1,'2022-03-09T20:15:29-05',90,'adamD102'),('1',6,'2022-03-10T20:15:29-05',270,'neob123'),('2',3,'2022-03-04T20:15:29-05',135,'ianc123'),('3',4,'2022-03-05T20:15:29-05',180,'jillb726'),('4',4,'2022-03-06T20:15:29-05',180,'pascalb627');
 /*!40000 ALTER TABLE `purchase_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,7 +289,7 @@ CREATE TABLE `seat` (
 
 LOCK TABLES `seat` WRITE;
 /*!40000 ALTER TABLE `seat` DISABLE KEYS */;
-INSERT INTO `seat` VALUES ('GA','A','3A',45,'5'),('FLOOR','B','14B',90,'3'),('GA','C','4C',45,'2'),('FLOOR','E','12E',90,'1'),('FLOOR','E','13E',90,'4');
+INSERT INTO `seat` VALUES ('GA','A','3A',45,'5'),('FLOOR','B','14B',90,'3'),('GA','C','4C',45,'2'),('FLOOR','E','12E',90,'1'),('FLOOR','E','13E',90,'4'),('FLOOR','Z','3Z',45,'4'),('FLOOR','Y','7Y',45,'4'),('FLOOR','X','33X',45,'4'),('FLOOR','W','12W',45,'4');
 /*!40000 ALTER TABLE `seat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -382,7 +382,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES ('1','1','124',45,'GA','A','3A','1'),('2','5','423',45,'GA','C','4C','2'),('3','4','182',90,'Floor','E','12E','3'),('4','3','83',90,'Floor','B','14B','4'),('5','3','782',90,'Floor','E','12E','5'),('6','3','123',45,'B','B','11B','4'),('7','3','123',45,'D','D','9D','2');
+INSERT INTO `ticket` VALUES ('1','1','124',45,'GA','A','3A','1'),('2','5','423',45,'GA','C','4C','2'),('3','4','182',90,'Floor','E','12E','3'),('4','3','83',90,'Floor','B','14B','4'),('5','3','782',90,'Floor','E','12E','5'),('6','3','123',45,'B','B','11B','4'),('7','3','123',45,'D','D','9D','2'),('8','3','1',45,'Floor','Z','3Z','4'),('9','3','2',45,'Floor','Y','7Y','4'),('10','3','3',45,'Floor','X','33X','4'),('11','3','4',45,'Floor','W','12W','4');
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 

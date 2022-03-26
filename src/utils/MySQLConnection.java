@@ -102,7 +102,7 @@ public class MySQLConnection {
     }
 
     public static ResultSet joinCustomerPurchaseOrder(String value){
-        String query = "SELECT DISTINCT first_name, last_name, email FROM customer C, purchase_order PO WHERE total_cost < ?";
+        String query = "SELECT DISTINCT first_name, last_name, email FROM customer C, purchase_order PO WHERE C.username = PO.username AND total_cost < ?";
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
