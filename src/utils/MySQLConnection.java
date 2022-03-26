@@ -2,13 +2,14 @@ package utils;
 
 import models.Performer;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 public class MySQLConnection {
     private static Connection connection;
 
     static {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticketbooking", "", "" );
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticketbooking", "root", "gameboy123" );
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,6 +99,22 @@ public class MySQLConnection {
         }
         return null;
 
+    }
+
+    public static ResultSet joinCustomerPurchaseOrder(String value){
+        String query = "SELECT DISTINCT first_name, last_name, email FROM customer C, purchase_order PO WHERE total_cost < ?";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = connection.prepareStatement(query);
+            stmt.setString(1, value);
+            rs = stmt.executeQuery();
+        }  catch (SQLException err) {
+            err.printStackTrace();
+        }
+
+        return rs;
     }
 
     private static String booleanToString(boolean b){

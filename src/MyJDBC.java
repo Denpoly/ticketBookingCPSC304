@@ -31,12 +31,14 @@ public class MyJDBC {
         CreatePerformerPanel createP = new CreatePerformerPanel();
         DeleteArtistPanel deleteP = new DeleteArtistPanel();
         ProjectionPanel projectP = new ProjectionPanel();
+        JoinPanel joinP = new JoinPanel();
 
         //Adding components to main panel
         main.add(selectP.getPanel());
         main.add(createP.getPanel());
         main.add(deleteP.getPanel());
         main.add(projectP.getPanel());
+        main.add(joinP.getPanel());
         main.add( new JScrollPane( ta )  );
 
 
