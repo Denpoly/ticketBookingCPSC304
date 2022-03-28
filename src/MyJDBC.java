@@ -32,6 +32,7 @@ public class MyJDBC {
         DeleteArtistPanel deleteP = new DeleteArtistPanel();
         ProjectionPanel projectP = new ProjectionPanel();
         JoinPanel joinP = new JoinPanel();
+        UpdatePerformerPanel updateP = new UpdatePerformerPanel();
 
         //Adding components to main panel
         main.add(selectP.getPanel());
@@ -39,6 +40,7 @@ public class MyJDBC {
         main.add(deleteP.getPanel());
         main.add(projectP.getPanel());
         main.add(joinP.getPanel());
+        main.add(updateP.getPanel());
         main.add( new JScrollPane( ta )  );
 
 

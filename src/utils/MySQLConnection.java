@@ -82,6 +82,29 @@ public class MySQLConnection {
 
     }
 
+    public static String updateAPerformer(Performer p) {
+        String query = "UPDATE performer SET stage_name = ?, industry = ?, email = ?, mobile_number = ?, postal_code = ? WHERE pid = ?";
+
+        Statement st = null;
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, p.getMstage_name());
+            stmt.setString(2, p.getMindustry());
+            stmt.setString(3, p.getMemail());
+            stmt.setString(4, p.getMmobile_number());
+            stmt.setString(5, p.getMpostal_code());
+            stmt.setString(6, p.getMpid());
+
+            stmt.execute();
+            return p.getMstage_name();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+
     public static ResultSet projectEventsByOptions(Boolean hasFood, Boolean hasAlcohol, Boolean isOutdoors){
         String query = "SELECT e.title, v.name FROM event e, hostedAt h, venue v WHERE e.eid = h.eid AND h.vid = v.vid AND v.has_alcohol = ? AND v.has_food = ? AND v.is_outdoor = ?";
         PreparedStatement stmt = null;
