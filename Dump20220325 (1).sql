@@ -22,7 +22,7 @@
 DROP TABLE IF EXISTS `comedyevent`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comedyevent` (venue
+CREATE TABLE `comedyevent` (
   `eid` varchar(45) NOT NULL,
   `age_limit` int NOT NULL,
   `standUp` tinyint NOT NULL,
@@ -57,6 +57,7 @@ CREATE TABLE `customer` (
   `password` varchar(45) NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
+  `age` int NOT NULL,
   PRIMARY KEY (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `mobile_number_UNIQUE` (`mobile_number`)
@@ -69,7 +70,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (12345,'adamdi134@hotmail.com','1938237742','adamD102','V6T 1z3','password!','Adam','Dixon'),(124,'denpollly@yahoo.com','1237228304','denpoly','80465','pass123','Dennis','Polyakov'),(12308,'mattmemme@live.com','1230948392','mattmemme','V6T 1z3','123pass','Matthew','Memme'),(123984,'testUser1@hotmail.com','1938462883','testUser1','V5N 1W1','passlel12','John','Smith'),(0,'testUser2@hotmail.com','1299334833','testUser2','94704','newPassword','Jacob','Tan'),(241,'neo.b@gmail.com','6045328786','neob123','v6j1k2','password123','Neo','Brown'),(3145,'ian.c@hotmail.ca','5867268876','ianc123','v7h1t4','password321','Ian','Castello'),(4713,'jill.b@live.ca','3765117825','jillb726','j6k9d0','pword123','Jill','Barber'),(71235,'pascal.h@gmail.com','2767825564','pascalb627','b8g6j2','passw123','Pascal','Huber');
+INSERT INTO `customer` VALUES (12345,'adamdi134@hotmail.com','1938237742','adamD102','V6T 1z3','password!','Adam','Dixon', 22),(124,'denpollly@yahoo.com','1237228304','denpoly','80465','pass123','Dennis','Polyakov', 22),(12308,'mattmemme@live.com','1230948392','mattmemme','V6T 1z3','123pass','Matthew','Memme', 26),(123984,'testUser1@hotmail.com','1938462883','testUser1','V5N 1W1','passlel12','John','Smith', 18),(0,'testUser2@hotmail.com','1299334833','testUser2','94704','newPassword','Jacob','Tan', 29),(241,'neo.b@gmail.com','6045328786','neob123','v6j1k2','password123','Neo','Brown', 32),(3145,'ian.c@hotmail.ca','5867268876','ianc123','v7h1t4','password321','Ian','Castello', 17),(4713,'jill.b@live.ca','3765117825','jillb726','j6k9d0','pword123','Jill','Barber', 23),(71235,'pascal.h@gmail.com','2767825564','pascalb627','b8g6j2','passw123','Pascal','Huber', 27);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 

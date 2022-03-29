@@ -4,6 +4,9 @@ import models.Performer;
 
 import javax.xml.transform.Result;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MySQLConnection {
     private static Connection connection;
 
@@ -82,6 +85,29 @@ public class MySQLConnection {
 
     }
 
+    public static String updateAPerformer(Performer p) {
+        String query = "UPDATE performer SET stage_name = ?, industry = ?, email = ?, mobile_number = ?, postal_code = ? WHERE pid = ?";
+
+        Statement st = null;
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, p.getMstage_name());
+            stmt.setString(2, p.getMindustry());
+            stmt.setString(3, p.getMemail());
+            stmt.setString(4, p.getMmobile_number());
+            stmt.setString(5, p.getMpostal_code());
+            stmt.setString(6, p.getMpid());
+
+            stmt.execute();
+            return p.getMstage_name();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+
     public static ResultSet projectEventsByOptions(Boolean hasFood, Boolean hasAlcohol, Boolean isOutdoors){
         String query = "SELECT e.title, v.name FROM event e, hostedAt h, venue v WHERE e.eid = h.eid AND h.vid = v.vid AND v.has_alcohol = ? AND v.has_food = ? AND v.is_outdoor = ?";
         PreparedStatement stmt = null;
@@ -134,6 +160,41 @@ public class MySQLConnection {
         }
 
         return rs;
+    }
+
+    public static String[] getEventTitles() {
+        String query = "SELECT DISTINCT title FROM event";
+        ArrayList<String> titles = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement(query);
+            ResultSet titles_rs = stmt.executeQuery();
+            while (titles_rs.next()) {
+                titles.add(titles_rs.getString("title"));
+            }
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+        return titles.toArray(new String[titles.size()]);
+    }
+
+    public static double getEventAverageAge(String event_title) {
+        String query = "SELECT AVG(c.age) FROM event e, customer c, ticket t, purchase_order p WHERE t.oid = p.oid AND t.eid = e.eid AND p.username = c.username AND e.title = ?";
+        Double average_age = 0.0;
+
+        try {
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement(query);
+            stmt.setString(1, event_title);
+            ResultSet age_set = stmt.executeQuery();
+            if (age_set.next()) {
+                average_age = age_set.getDouble(1);
+            }
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+        return average_age;
     }
 
     private static String booleanToString(boolean b){
