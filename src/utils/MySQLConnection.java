@@ -100,15 +100,34 @@ public class MySQLConnection {
         return null;
 
     }
-
-    public static ResultSet joinCustomerPurchaseOrder(String value){
-        String query = "SELECT DISTINCT first_name, last_name, email FROM customer C, purchase_order PO WHERE C.username = PO.username AND total_cost < ?";
+    /*
+     * Query to get all first names, last names and emails
+     * of all customers who have spent less than totalCost
+     * on a single purchase order.
+     */
+    public static ResultSet joinCustomerPurchaseOrder(String totalCost){
+        String query = "SELECT DISTINCT PO.total_cost, C.first_name, C.last_name, email, E.title FROM customer C, purchase_order PO, ticket T, event E WHERE T.eid = E.eid AND PO.oid = T.oid AND C.username = PO.username AND total_cost < ?";
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             stmt = connection.prepareStatement(query);
-            stmt.setString(1, value);
+            stmt.setString(1, totalCost);
+            rs = stmt.executeQuery();
+        }  catch (SQLException err) {
+            err.printStackTrace();
+        }
+
+        return rs;
+    }
+
+    public static ResultSet nestedAggregationQuery(){
+        String query = "SELECT C.username, MAX(PO.total_cost) FROM customer C, purchase_order PO WHERE C.username = PO.username GROUP BY C.username";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = connection.prepareStatement(query);
             rs = stmt.executeQuery();
         }  catch (SQLException err) {
             err.printStackTrace();

@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 public class JoinPanel extends JFrame {
     //Components
-    JButton b22 = new JButton("query customers");
+    JButton b22 = new JButton("customer purchase data");
     JTextField t = new JTextField(16);
-    JLabel l = new JLabel("JOIN QUERY: Enter a lower total_cost limit");
+    JLabel l = new JLabel("JOIN QUERY: Customers who have spend up to ($):");
     JPanel p = new JPanel();
 
     public JoinPanel() {
@@ -20,10 +20,12 @@ public class JoinPanel extends JFrame {
             ResultSet results = MySQLConnection.joinCustomerPurchaseOrder(t.getText());
             try {
                 while (results.next()) {
+                    String total_cost = results.getString("total_cost");
                     String first_name = results.getString("first_name");
                     String last_name = results.getString("last_name");
                     String email = results.getString("email");
-                    System.out.format("%s, %s, %s\n", first_name, last_name, email);
+                    String eventTitle = results.getString("title");
+                    System.out.format("%s, %s, %s, %s, %s\n", first_name, last_name, email, total_cost, eventTitle);
                 }
                 System.out.print("\n");
             } catch (SQLException err) {

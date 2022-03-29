@@ -32,6 +32,7 @@ public class MyJDBC {
         DeleteArtistPanel deleteP = new DeleteArtistPanel();
         ProjectionPanel projectP = new ProjectionPanel();
         JoinPanel joinP = new JoinPanel();
+        NestedAggregationPanel naPanel = new NestedAggregationPanel();
 
         //Adding components to main panel
         main.add(selectP.getPanel());
@@ -39,6 +40,7 @@ public class MyJDBC {
         main.add(deleteP.getPanel());
         main.add(projectP.getPanel());
         main.add(joinP.getPanel());
+        main.add(naPanel.getPanel());
         main.add( new JScrollPane( ta )  );
 
 
