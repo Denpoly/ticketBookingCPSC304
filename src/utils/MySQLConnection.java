@@ -4,6 +4,9 @@ import models.Performer;
 
 import javax.xml.transform.Result;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MySQLConnection {
     private static Connection connection;
 
@@ -138,6 +141,41 @@ public class MySQLConnection {
         }
 
         return rs;
+    }
+
+    public static String[] getEventTitles() {
+        String query = "SELECT DISTINCT title FROM event";
+        ArrayList<String> titles = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement(query);
+            ResultSet titles_rs = stmt.executeQuery();
+            while (titles_rs.next()) {
+                titles.add(titles_rs.getString("title"));
+            }
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+        return titles.toArray(new String[titles.size()]);
+    }
+
+    public static double getEventAverageAge(String event_title) {
+        String query = "SELECT AVG(c.age) FROM event e, customer c, ticket t, purchase_order p WHERE t.oid = p.oid AND t.eid = e.eid AND p.username = c.username AND e.title = ?";
+        Double average_age = 0.0;
+
+        try {
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement(query);
+            stmt.setString(1, event_title);
+            ResultSet age_set = stmt.executeQuery();
+            if (age_set.next()) {
+                average_age = age_set.getDouble(1);
+            }
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+        return average_age;
     }
 
     private static String booleanToString(boolean b){
