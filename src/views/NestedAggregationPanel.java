@@ -7,16 +7,19 @@ import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// SELECT C.username, MAX(PO.total_cost), E.title FROM customer C, purchase_order PO, ticket T, event E WHERE T.eid = E.eid AND PO.oid = T.oid AND C.username = PO.username GROUP BY C.username
 public class NestedAggregationPanel {
     //Components
     JButton b22 = new JButton("run query");
-    JLabel l = new JLabel("NESTED AGGREGRATION QUERY: Find the most money each user has spent on an order:");
+    JLabel l = new JLabel("NESTED AGGREGRATION QUERY: Find the most money each user has spent on orders at venues with various amenity options:");
     JPanel p = new JPanel();
+    JCheckBox hasAlcohol = new JCheckBox("Alcohol");
+    JCheckBox isOutdoor = new JCheckBox("Outdoors");
+    JCheckBox hasFood = new JCheckBox("Food");
+    JPanel options = new JPanel();
 
     public NestedAggregationPanel(){
         b22.addActionListener((ActionEvent e) -> {
-            ResultSet results = MySQLConnection.nestedAggregationQuery();
+            ResultSet results = MySQLConnection.nestedAggregationQuery(hasAlcohol.isSelected(), hasFood.isSelected(), isOutdoor.isSelected());
             try {
                 while (results.next()) {
                     String username = results.getString("username");
@@ -28,8 +31,13 @@ public class NestedAggregationPanel {
                 err.printStackTrace();
             }
         });
+        options.add(hasAlcohol);
+        options.add(hasFood);
+        options.add(isOutdoor);
         p.add(l);
+        p.add(options);
         p.add(b22);
+
     }
     public JPanel getPanel() {
         return p;
