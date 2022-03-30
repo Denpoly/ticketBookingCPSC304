@@ -197,6 +197,29 @@ public class MySQLConnection {
         return average_age;
     }
 
+    public static ResultSet customerDivisionQuery() {
+        String query = "SELECT c.first_name, c.last_name\n" +
+                "FROM customer c\n" +
+                "WHERE NOT EXISTS\n" +
+                "(SELECT p.eid\n" +
+                "FROM performs p, performer pf\n" +
+                "WHERE p.pid = pf.pid AND pf.stage_name = 'Ariana Grande' AND p.eid NOT IN\n" +
+                "(SELECT p.eid\n" +
+                "FROM performs p, performer pf, ticket t, purchase_order po\n" +
+                "WHERE p.pid = pf.pid AND p.eid = t.eid AND t.oid = po.oid AND po.username = c.username AND pf.stage_name = 'Ariana Grande'\n" +
+                "))";
+        ResultSet rs = null;
+
+        try {
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement(query);
+            rs = stmt.executeQuery();
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+        return rs;
+    }
+
     private static String booleanToString(boolean b){
         return b? "1" : "0";
     }

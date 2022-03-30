@@ -1,7 +1,6 @@
 import views.*;
 
 import java.io.PrintStream;
-import java.sql.*;
 import javax.swing.*;
 
 public class MyJDBC {
@@ -38,6 +37,7 @@ public class MyJDBC {
         NestedAggregationPanel naPanel = new NestedAggregationPanel();
         UpdatePerformerPanel updateP = new UpdatePerformerPanel();
         EventAverageAgePanel aggregationPanel = new EventAverageAgePanel();
+        DivisionPanel divisionP = new DivisionPanel();
 
         //Adding components to main panel
         performer.add(selectP.getPanel());
@@ -54,6 +54,7 @@ public class MyJDBC {
 
         tabs.add("Performers", performer);
         tabs.add("Other", main);
+        tabs.add("Division", divisionP.getPanel());
 
         frame.add(tabs);
         frame.setVisible(true);
