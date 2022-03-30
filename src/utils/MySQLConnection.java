@@ -147,13 +147,16 @@ public class MySQLConnection {
         return rs;
     }
 
-    public static ResultSet nestedAggregationQuery(){
-        String query = "SELECT C.username, MAX(PO.total_cost) FROM customer C, purchase_order PO WHERE C.username = PO.username GROUP BY C.username";
+    public static ResultSet nestedAggregationQuery(Boolean hasFood, Boolean hasAlcohol, Boolean isOutdoors){
+        String query = "select C.username, MAX(PO.total_cost) from venue V, customer C, purchase_order PO, ticket T where C.username = PO.username AND PO.oid = T.oid AND T.vid = V.vid AND V.has_alcohol = ? AND V.has_food = ? AND V.is_outdoor = ? GROUP BY C.username";
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             stmt = connection.prepareStatement(query);
+            stmt.setString(1, booleanToString(hasAlcohol));
+            stmt.setString(2, booleanToString(hasFood));
+            stmt.setString(3, booleanToString(isOutdoors));
             rs = stmt.executeQuery();
         }  catch (SQLException err) {
             err.printStackTrace();
