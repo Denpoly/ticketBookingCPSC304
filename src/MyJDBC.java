@@ -1,5 +1,6 @@
 import views.*;
 
+import java.awt.*;
 import java.io.PrintStream;
 import javax.swing.*;
 
@@ -14,7 +15,7 @@ public class MyJDBC {
         //FRAME
         JFrame frame = new JFrame("My First GUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000,800);
+        frame.setSize(1400,800);
 
         //Components
         JTabbedPane tabs = new JTabbedPane();
@@ -23,6 +24,8 @@ public class MyJDBC {
         performer.setLayout(new BoxLayout(performer, BoxLayout.Y_AXIS));
         JPanel main = new JPanel();
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
+        JPanel appContainer = new JPanel();
+        appContainer.setLayout(new BoxLayout(appContainer, BoxLayout.X_AXIS));
 
         JTextArea ta = new JTextArea();
 
@@ -44,19 +47,22 @@ public class MyJDBC {
         performer.add(createP.getPanel());
         performer.add(deleteP.getPanel());
         performer.add(updateP.getPanel());
-        performer.add(new JScrollPane(ta));
+        //performer.add(new JScrollPane(ta));
 
         main.add(projectP.getPanel());
         main.add(joinP.getPanel());
         main.add(naPanel.getPanel());
         main.add(aggregationPanel.getPanel());
-        main.add( new JScrollPane( ta )  );
-
         tabs.add("Performers", performer);
         tabs.add("Other", main);
         tabs.add("Division", divisionP.getPanel());
+        //tabs.setPreferredSize(new Dimension(1000, 800));
+        appContainer.add(tabs);
+        JScrollPane console = new JScrollPane(ta);
+        console.setPreferredSize(new Dimension(1000,400));
+        appContainer.add(console);
 
-        frame.add(tabs);
+        frame.add(appContainer);
         frame.setVisible(true);
     }
 }

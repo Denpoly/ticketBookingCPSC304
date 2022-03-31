@@ -70,7 +70,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (12345,'adamdi134@hotmail.com','1938237742','adamD102','V6T 1z3','password!','Adam','Dixon', 22),(124,'denpollly@yahoo.com','1237228304','denpoly','80465','pass123','Dennis','Polyakov', 22),(12308,'mattmemme@live.com','1230948392','mattmemme','V6T 1z3','123pass','Matthew','Memme', 26),(123984,'testUser1@hotmail.com','1938462883','testUser1','V5N 1W1','passlel12','John','Smith', 18),(0,'testUser2@hotmail.com','1299334833','testUser2','94704','newPassword','Jacob','Tan', 29),(241,'neo.b@gmail.com','6045328786','neob123','v6j1k2','password123','Neo','Brown', 32),(3145,'ian.c@hotmail.ca','5867268876','ianc123','v7h1t4','password321','Ian','Castello', 17),(4713,'jill.b@live.ca','3765117825','jillb726','j6k9d0','pword123','Jill','Barber', 23),(71235,'pascal.h@gmail.com','2767825564','pascalb627','b8g6j2','passw123','Pascal','Huber', 27);
+INSERT INTO `customer` VALUES (12345,'adamdi134@hotmail.com','1938237742','adamD102','V6T 1z3','password!','Adam','Dixon',22),(124,'denpollly@yahoo.com','1237228304','denpoly','80465','pass123','Dennis','Polyakov',22),(3145,'ian.c@hotmail.ca','5867268876','ianc123','v7h1t4','password321','Ian','Castello',17),(4713,'jill.b@live.ca','3765117825','jillb726','j6k9d0','pword123','Jill','Barber',23),(12308,'mattmemme@live.com','1230948392','mattmemme','V6T 1z3','123pass','Matthew','Memme',26),(241,'neo.b@gmail.com','6045328786','neob123','v6j1k2','password123','Neo','Brown',32),(71235,'pascal.h@gmail.com','2767825564','pascalb627','b8g6j2','passw123','Pascal','Huber',27),(123984,'testUser1@hotmail.com','1938462883','testUser1','V5N 1W1','passlel12','John','Smith',18),(0,'testUser2@hotmail.com','1299334833','testUser2','94704','newPassword','Jacob','Tan',29);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,7 +205,7 @@ CREATE TABLE `performer` (
 
 LOCK TABLES `performer` WRITE;
 /*!40000 ALTER TABLE `performer` DISABLE KEYS */;
-INSERT INTO `performer` VALUES ('Test','123123','Music','test@test.com','1203320120','test@test.com'),('Lady Gaga','2','Music','lgIsBoss@yahoo.net','643-234-1820','12093'),('Ariana Grande','3','Music','AriG@optonline.net','432-349-3902','12093'),('Jerry Seinfeld','4','Comedy','LarryDavidisBald@gmail.com','984-102-3203','19322'),('Larry David','5','Comedy','JerrySisAJerk@live.com','012-302-3496','12093'),('Florida Georgia Line','6','Music','Fgl123@hotmail.com','921-782-9021','50940'),('Ryan Reynolds','7','Comedy','RyanReynoldsComedy@reynolds.com','564-832-4320','29083'),('Amy Schumer','8','Comedy','Ams@yahoo.com','021-964-7476','78439'),('test','test','test','test','test','test'),('test','test123','test','test@test','test','test@test');
+INSERT INTO `performer` VALUES ('Test','123123','Music','test@test.com','1203320120','test@test.com'),('Lady Gaga','2','Music','lgIsBoss@yahoo.net','643-234-1820','12093'),('Ariana Grande','3','Music','AriG@optonline.net','432-349-3902','12093'),('Jerry Seinfeld','4','Comedy','LarryDavidisBald@gmail.com','984-102-3203','19322'),('Larry David','5','Comedy','JerrySisAJerk@live.com','012-302-3496','12093'),('Florida Georgia Line','6','Music','Fgl123@hotmail.com','921-782-9021','50940'),('Ryan Reynolds','7','Comedy','RyanReynoldsComedy@reynolds.com','564-832-4320','29083'),('Amy Schumer','8','Comedy','Ams@yahoo.com','021-964-7476','78439'),('test','test','test','test','test','test'),('test2','test123','test','test@test','test','test@test');
 /*!40000 ALTER TABLE `performer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,7 +261,7 @@ CREATE TABLE `purchase_order` (
 
 LOCK TABLES `purchase_order` WRITE;
 /*!40000 ALTER TABLE `purchase_order` DISABLE KEYS */;
-INSERT INTO `purchase_order` VALUES ('123',2,'2022-03-02T20:15:29-05',90,'denpoly'),('124',1,'2022-02-28T20:15:29-05',45,'testUser1'),('182',1,'2022-02-27T20:15:29-05',90,'testUser1'),('423',1,'2022-01-29T20:15:29-05',45,'mattmemme'),('782',1,'2022-03-01T20:15:29-05',90,'mattmemme'),('83',1,'2022-03-09T20:15:29-05',90,'adamD102'),('1',6,'2022-03-10T20:15:29-05',270,'neob123'),('2',3,'2022-03-04T20:15:29-05',135,'ianc123'),('3',4,'2022-03-05T20:15:29-05',180,'jillb726'),('4',4,'2022-03-06T20:15:29-05',180,'pascalb627');
+INSERT INTO `purchase_order` VALUES ('1',6,'2022-03-10T20:15:29-05',270,'neob123'),('123',2,'2022-03-02T20:15:29-05',90,'denpoly'),('124',1,'2022-02-28T20:15:29-05',45,'testUser1'),('182',1,'2022-02-27T20:15:29-05',90,'testUser1'),('2',3,'2022-03-04T20:15:29-05',135,'ianc123'),('3',4,'2022-03-05T20:15:29-05',225,'jillb726'),('4',4,'2022-03-06T20:15:29-05',180,'pascalb627'),('423',1,'2022-01-29T20:15:29-05',45,'mattmemme'),('782',1,'2022-03-01T20:15:29-05',90,'mattmemme'),('8',1,'March 3',45,'adamD102'),('83',1,'2022-03-09T20:15:29-05',90,'adamD102');
 /*!40000 ALTER TABLE `purchase_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,7 +290,7 @@ CREATE TABLE `seat` (
 
 LOCK TABLES `seat` WRITE;
 /*!40000 ALTER TABLE `seat` DISABLE KEYS */;
-INSERT INTO `seat` VALUES ('GA','A','3A',45,'5'),('FLOOR','B','14B',90,'3'),('GA','C','4C',45,'2'),('FLOOR','E','12E',90,'1'),('FLOOR','E','13E',90,'4'),('FLOOR','Z','3Z',45,'4'),('FLOOR','Y','7Y',45,'4'),('FLOOR','X','33X',45,'4'),('FLOOR','W','12W',45,'4');
+INSERT INTO `seat` VALUES ('GA','A','3A',45,'5'),('FLOOR','B','14B',90,'3'),('GA','C','4C',45,'2'),('FLOOR','E','12E',90,'1'),('FLOOR','E','13E',90,'4'),('FLOOR','W','12W',45,'4'),('FLOOR','X','33X',45,'4'),('FLOOR','Y','7Y',45,'4'),('FLOOR','Z','3Z',45,'4');
 /*!40000 ALTER TABLE `seat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -383,7 +383,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES ('1','1','124',45,'GA','A','3A','1'),('2','5','423',45,'GA','C','4C','2'),('3','4','182',90,'Floor','E','12E','3'),('4','3','83',90,'Floor','B','14B','4'),('5','3','782',90,'Floor','E','12E','5'),('6','3','123',45,'B','B','11B','4'),('7','3','123',45,'D','D','9D','2'),('8','3','1',45,'Floor','Z','3Z','4'),('9','3','2',45,'Floor','Y','7Y','4'),('10','3','3',45,'Floor','X','33X','4'),('11','3','4',45,'Floor','W','12W','4');
+INSERT INTO `ticket` VALUES ('1','1','124',45,'GA','A','3A','1'),('10','3','3',45,'Floor','X','33X','4'),('11','3','4',45,'Floor','W','12W','4'),('13','8','8',45,'Floor','A','8a','5'),('14','10','8',0,'Floor','A','91','2'),('15','8','3',45,'G','A','23F','4'),('2','5','423',45,'GA','C','4C','2'),('3','4','182',90,'Floor','E','12E','3'),('4','3','83',90,'Floor','B','14B','4'),('5','3','782',90,'Floor','E','12E','5'),('6','3','123',45,'B','B','11B','4'),('7','3','123',45,'D','D','9D','2'),('8','3','1',45,'Floor','Z','3Z','4'),('9','3','2',45,'Floor','Y','7Y','4');
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -428,4 +428,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-25 13:24:52
+-- Dump completed on 2022-03-31 12:19:38
