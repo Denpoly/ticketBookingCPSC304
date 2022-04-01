@@ -43,10 +43,10 @@ public class MyJDBC {
         DivisionPanel divisionP = new DivisionPanel();
 
         //Adding components to main panel
-        performer.add(selectP.getPanel());
-        performer.add(createP.getPanel());
-        performer.add(deleteP.getPanel());
         performer.add(updateP.getPanel());
+        performer.add(selectP.getPanel());
+        //performer.add(createP.getPanel());
+        performer.add(deleteP.getPanel());
         //performer.add(new JScrollPane(ta));
 
         main.add(projectP.getPanel());

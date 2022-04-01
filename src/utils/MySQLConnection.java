@@ -5,7 +5,9 @@ import models.Performer;
 import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MySQLConnection {
     private static Connection connection;
@@ -106,6 +108,23 @@ public class MySQLConnection {
         }
 
         return null;
+    }
+
+    public static Set<String> getPerformerIDs() {
+        String query = "SELECT DISTINCT pid FROM performer";
+        Set<String> pids = new HashSet<>();
+
+        try {
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement(query);
+            ResultSet pids_rs = stmt.executeQuery();
+            while (pids_rs.next()) {
+                pids.add(pids_rs.getString("pid"));
+            }
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+        return pids;
     }
 
     public static ResultSet projectEventsByOptions(Boolean hasFood, Boolean hasAlcohol, Boolean isOutdoors){
