@@ -50,10 +50,10 @@ public class UpdatePerformerPanel extends JFrame {
 
             if (existing_pids.contains(tPid.getText())) {
                 String return_value = MySQLConnection.updateAPerformer(p);
-                System.out.println("Successfully updated tuple for: " + return_value);
+                System.out.println("Successfully updated tuple for: " + return_value + "\n");
             } else {
                 Boolean success = MySQLConnection.createAPerformer(p);
-                System.out.println("Successfully inserted tuple for: " + tStageName.getText());
+                System.out.println("Successfully inserted tuple for: " + tStageName.getText() + "\n");
             }
         });
 

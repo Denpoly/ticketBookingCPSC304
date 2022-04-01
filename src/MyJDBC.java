@@ -15,7 +15,7 @@ public class MyJDBC {
         //FRAME
         JFrame frame = new JFrame("My First GUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1400,800);
+        frame.setSize(1100,800);
 
         //Components
         JTabbedPane tabs = new JTabbedPane();
@@ -39,9 +39,9 @@ public class MyJDBC {
 
         // Add performer table panels to the performer tab
         performer.add(updateP.getPanel());
-        performer.add(Box.createRigidArea(new Dimension(0, 60)));
+        performer.add(Box.createRigidArea(new Dimension(0, 45)));
         performer.add(selectP.getPanel());
-        performer.add(Box.createRigidArea(new Dimension(0, 60)));
+        performer.add(Box.createRigidArea(new Dimension(0, 45)));
         performer.add(deleteP.getPanel());
 
         // Event and Customer table panels
@@ -53,19 +53,22 @@ public class MyJDBC {
 
         // Add event and customer table panels to the event and customers tab
         main.add(projectP.getPanel());
+        main.add(Box.createRigidArea(new Dimension(0, 45)));
         main.add(joinP.getPanel());
+        main.add(Box.createRigidArea(new Dimension(0, 45)));
         main.add(naPanel.getPanel());
+        main.add(Box.createRigidArea(new Dimension(0, 45)));
         main.add(aggregationPanel.getPanel());
+        main.add(Box.createRigidArea(new Dimension(0, 45)));
         main.add(divisionP.getPanel());
 
         // Add panels to appropriate tabs
         tabs.add("Performers", performer);
         tabs.add("Events and Customers", main);
 
-        //tabs.setPreferredSize(new Dimension(1000, 800));
         appContainer.add(tabs);
         JScrollPane console = new JScrollPane(ta);
-        console.setPreferredSize(new Dimension(1000,400));
+        console.setPreferredSize(new Dimension(400,400));
         appContainer.add(console);
 
         frame.add(appContainer);

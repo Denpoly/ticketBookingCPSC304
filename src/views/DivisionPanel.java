@@ -12,41 +12,39 @@ public class DivisionPanel extends JFrame {
 
     //Components
     JPanel panel = new JPanel();
-    JLabel label = new JLabel("Find all customers that have bought tickets for all Ariana Grande events:");
+    JLabel label = new JLabel("Find all customers that have bought tickets for all Ariana Grande events.");
+    JLabel label2 = new JLabel("(Division)");
     JButton button = new JButton("Find Customers");
-    //JLabel out_label = new JLabel();
 
     public DivisionPanel() {
         button.addActionListener((ActionEvent e) -> {
             ResultSet customers = MySQLConnection.customerDivisionQuery();
-            StringBuilder out = new StringBuilder("Customers: ");
             String first, last;
+            System.out.println("Customers:");
             try {
                 while (customers.next()) {
 
                     first = customers.getString("first_name");
                     last = customers.getString("last_name");
-                    out.append(first).append(" ").append(last).append(", ");
+                    System.out.println(first + " " + last);
 
                 }
+                System.out.print("\n");
             } catch (SQLException err) {
                 err.printStackTrace();
             }
-            System.out.println(out);
-            //out.delete(out.lastIndexOf(","), out.length());
-            //out_label.setText(out.toString());
         });
 
         panel.add(label);
-        panel.add(Box.createRigidArea(new Dimension(0, 30)));
+        panel.add(label2);
+        panel.add(Box.createRigidArea(new Dimension(0, 15)));
         panel.add(button);
-        panel.add(Box.createRigidArea(new Dimension(0, 30)));
-        //panel.add(out_label);
+
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label2.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //out_label.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
     public JPanel getPanel() {

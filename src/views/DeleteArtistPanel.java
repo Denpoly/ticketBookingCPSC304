@@ -21,7 +21,7 @@ public class DeleteArtistPanel extends JFrame {
         b22.addActionListener((ActionEvent e) -> {
             String stage_name = dropdown.getItemAt(dropdown.getSelectedIndex());
             MySQLConnection.deleteAPerformer(stage_name);
-            System.out.println("Deleted the tuple for: " + stage_name);
+            System.out.println("Deleted the tuple for: " + stage_name + "\n");
             dropdown.removeItemAt(dropdown.getSelectedIndex());
         });
 
