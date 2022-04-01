@@ -12,9 +12,12 @@ import java.util.Set;
 public class MySQLConnection {
     private static Connection connection;
 
+    private static String username = "";
+    private static String password = "";
+
     static {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticketbooking", "root", "" );
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ticketbooking", username, password );
         } catch (SQLException e) {
             e.printStackTrace();
         }

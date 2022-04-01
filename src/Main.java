@@ -4,7 +4,7 @@ import java.awt.*;
 import java.io.PrintStream;
 import javax.swing.*;
 
-public class MyJDBC {
+public class Main {
     static JButton b, b1, b2;
     static JLabel l;
     static JTextField t;
