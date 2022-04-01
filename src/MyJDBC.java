@@ -32,30 +32,36 @@ public class MyJDBC {
         con =new PrintStream(new TextAreaOutputStream(ta));
         System.setOut( con );
 
+        // Performer table panels
+        UpdatePerformerPanel updateP = new UpdatePerformerPanel();
         SelectPanel selectP = new SelectPanel();
-        CreatePerformerPanel createP = new CreatePerformerPanel();
         DeleteArtistPanel deleteP = new DeleteArtistPanel();
+
+        // Add performer table panels to the performer tab
+        performer.add(updateP.getPanel());
+        performer.add(Box.createRigidArea(new Dimension(0, 60)));
+        performer.add(selectP.getPanel());
+        performer.add(Box.createRigidArea(new Dimension(0, 60)));
+        performer.add(deleteP.getPanel());
+
+        // Event and Customer table panels
         ProjectionPanel projectP = new ProjectionPanel();
         JoinPanel joinP = new JoinPanel();
         NestedAggregationPanel naPanel = new NestedAggregationPanel();
-        UpdatePerformerPanel updateP = new UpdatePerformerPanel();
         EventAverageAgePanel aggregationPanel = new EventAverageAgePanel();
         DivisionPanel divisionP = new DivisionPanel();
 
-        //Adding components to main panel
-        performer.add(updateP.getPanel());
-        performer.add(selectP.getPanel());
-        //performer.add(createP.getPanel());
-        performer.add(deleteP.getPanel());
-        //performer.add(new JScrollPane(ta));
-
+        // Add event and customer table panels to the event and customers tab
         main.add(projectP.getPanel());
         main.add(joinP.getPanel());
         main.add(naPanel.getPanel());
         main.add(aggregationPanel.getPanel());
+        main.add(divisionP.getPanel());
+
+        // Add panels to appropriate tabs
         tabs.add("Performers", performer);
-        tabs.add("Other", main);
-        tabs.add("Division", divisionP.getPanel());
+        tabs.add("Events and Customers", main);
+
         //tabs.setPreferredSize(new Dimension(1000, 800));
         appContainer.add(tabs);
         JScrollPane console = new JScrollPane(ta);

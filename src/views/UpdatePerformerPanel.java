@@ -77,12 +77,12 @@ public class UpdatePerformerPanel extends JFrame {
         fieldPanel.setLayout(new GridLayout(4, 3));
 
         mainPanel.add(title);
-        mainPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         mainPanel.add(info_text1);
         mainPanel.add(info_text2);
-        mainPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         mainPanel.add(fieldPanel);
-        mainPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         mainPanel.add(button);
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 

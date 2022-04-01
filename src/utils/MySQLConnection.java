@@ -201,6 +201,23 @@ public class MySQLConnection {
         return titles.toArray(new String[titles.size()]);
     }
 
+    public static String[] getPerformerStageNames() {
+        String query = "SELECT DISTINCT stage_name FROM performer";
+        ArrayList<String> names = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = null;
+            stmt = connection.prepareStatement(query);
+            ResultSet names_rs = stmt.executeQuery();
+            while (names_rs.next()) {
+                names.add(names_rs.getString("stage_name"));
+            }
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+        return names.toArray(new String[names.size()]);
+    }
+
     public static double getEventAverageAge(String event_title) {
         String query = "SELECT AVG(c.age) FROM event e, customer c, ticket t, purchase_order p WHERE t.oid = p.oid AND t.eid = e.eid AND p.username = c.username AND e.title = ?";
         Double average_age = 0.0;
